@@ -1,7 +1,7 @@
 /**
  * @example rng(1000, "scale") or rng(50, "percentage")
  * @param {Number} value x% chance for percentage type or 1/x for scale type. 
- * @param {String} type Percentage or scale.
+ * @param {("percentage" | "scale")} type Defines the type.
  */
 function rng(value, type) {
     type = type.toLowerCase()
@@ -10,7 +10,7 @@ function rng(value, type) {
     if (typeof(value) == "string") value = parseInt(value);
     let cent = 100
     if (type == "percentage") {
-        if(value > 100) throw "Percentage can't be higher than 100!";
+        if(value > 100) throw "Percentage value can't be higher than 100!";
         const strv = value.toString()
         if(strv.includes(".")) {
             value = parseInt(strv.replace(".", ""))
