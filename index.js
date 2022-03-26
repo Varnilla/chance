@@ -1,11 +1,11 @@
 /**
- * @example rng(1000, "scale") or rng(50, "percentage")
- * @param {Number} value x% chance for percentage type or 1/x for scale type. 
- * @param {("percentage" | "scale")} type Defines the type.
+ * @example rng(1000, "fraction") or rng(50, "percentage")
+ * @param {Number} value x% chance for percentage type or 1/x for fraction type. 
+ * @param {("percentage" | "fraction")} type Defines the type.
  */
 function rng(value, type) {
     type = type.toLowerCase()
-    if (!["percentage", "scale"].includes(type)) throw "Valid types are percentage or scale!";
+    if (!["percentage", "fraction"].includes(type)) throw "Valid types are percentage or fraction!";
     if (typeof(value) != "number") throw "Value must be a number!";
     if (typeof(value) == "string") value = parseInt(value);
     let cent = 100
@@ -17,5 +17,5 @@ function rng(value, type) {
             for(x = 0; x < strv.split(".")[1].length; x++) cent *= 10
         }
     }
-    return Math.round(Math.random() * (type == "scale" ? value : cent)) < (type == "scale" ? 1 : value)
+    return Math.round(Math.random() * (type == "fraction" ? value : cent)) < (type == "fraction" ? 1 : value)
 }
